@@ -89,7 +89,7 @@ const config: Config = {
             position: 'right',
         },
           {
-              href: "https://github.com/cloudnative-pg/plugin-barman-cloud",
+              href: "https://github.com/edkadigital/plugin-barman-cloud",
               position: "right",
               className: "header-github-link",
               "aria-label": "GitHub repository",
@@ -123,7 +123,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/cloudnative-pg/plugin-barman-cloud',
+              href: 'https://github.com/edkadigital/plugin-barman-cloud',
             },
             {
               label: 'CloudNativePG',

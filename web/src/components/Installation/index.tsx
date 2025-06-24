@@ -9,7 +9,7 @@ export function InstallationSnippet(): ReactElement<null> {
     return (
         <CodeBlock language="sh">
             {`kubectl apply -f \\
-        https://github.com/cloudnative-pg/plugin-barman-cloud/releases/download/v${latest}/manifest.yaml`}
+        https://github.com/edkadigital/plugin-barman-cloud/releases/download/v${latest}/manifest.yaml`}
         </CodeBlock>
     );
 }

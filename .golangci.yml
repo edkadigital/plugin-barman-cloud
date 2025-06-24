@@ -78,7 +78,7 @@ formatters:
       sections:
         - standard
         - default
-        - prefix(github.com/cloudnative-pg/plugin-barman-cloud)
+        - prefix(github.com/edkadigital/plugin-barman-cloud)
         - blank
         - dot
   exclusions:

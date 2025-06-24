@@ -146,7 +146,7 @@ of [Amazon S3 Data Integrity Protections](https://docs.aws.amazon.com/sdkref/lat
 may lead to the `x-amz-content-sha256` error when using the Barman Cloud
 Plugin.
 
-If you encounter this issue (see [GitHub issue #393](https://github.com/cloudnative-pg/plugin-barman-cloud/issues/393)),
+If you encounter this issue (see [GitHub issue #393](https://github.com/edkadigital/plugin-barman-cloud/issues/393)),
 you can apply the following workaround by setting specific environment
 variables in the `ObjectStore` resource:
 
