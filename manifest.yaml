@@ -608,8 +608,18 @@ spec:
                         restored.
                       format: date-time
                       type: string
+                    firstWALSubmissionTime:
+                      description: The timestamp of the first WAL file successfully
+                        submitted to the object store
+                      format: date-time
+                      type: string
                     lastSuccussfulBackupTime:
                       description: The last successful backup time
+                      format: date-time
+                      type: string
+                    lastWALSubmissionTime:
+                      description: The timestamp of the last WAL file successfully
+                        submitted to the object store
                       format: date-time
                       type: string
                   type: object
@@ -927,7 +937,7 @@ spec:
             secretKeyRef:
               key: SIDECAR_IMAGE
               name: plugin-barman-cloud-8tfddg42gf
-        image: ghcr.io/cloudnative-pg/plugin-barman-cloud-testing:main
+        image: ghcr.io/edkadigital/plugin-barman-cloud-testing:main
         name: barman-cloud
         ports:
         - containerPort: 9090
