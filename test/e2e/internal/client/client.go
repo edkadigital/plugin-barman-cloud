@@ -31,7 +31,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 
-	pluginBarmanCloudV1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
+	pluginBarmanCloudV1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
 )
 
 // NewClient creates a new controller-runtime Kubernetes client.

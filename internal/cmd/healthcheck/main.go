@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
 )
 
 // NewCmd returns the healthcheck command

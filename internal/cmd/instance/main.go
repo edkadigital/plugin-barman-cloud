@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/instance"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/instance"
 )
 
 // NewCmd creates a new instance command

@@ -6,8 +6,8 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/ptr"
 
-	pluginBarmanCloudV1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
-	"github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/objectstore"
+	pluginBarmanCloudV1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
+	"github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/objectstore"
 )
 
 type testCaseFactory interface {

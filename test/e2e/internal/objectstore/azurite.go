@@ -28,7 +28,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/ptr"
 
-	pluginBarmanCloudV1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
+	pluginBarmanCloudV1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
 )
 
 // NewAzuriteObjectStoreResources creates the resources required to create an Azurite object store.

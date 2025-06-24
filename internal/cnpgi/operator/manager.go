@@ -33,8 +33,8 @@ import (
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/controller"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
+	"github.com/edkadigital/plugin-barman-cloud/internal/controller"
 
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
 	// to ensure that exec-entrypoint and run can make use of them.

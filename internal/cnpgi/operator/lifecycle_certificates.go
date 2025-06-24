@@ -7,9 +7,9 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/types"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/operator/config"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/operator/config"
 )
 
 // barmanCertificatesVolumeName is the name of the volume that hosts

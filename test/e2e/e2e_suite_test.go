@@ -28,13 +28,13 @@ import (
 	kustomizeTypes "sigs.k8s.io/kustomize/api/types"
 	"sigs.k8s.io/kustomize/kyaml/resid"
 
-	internalClient "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/client"
-	"github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/deployment"
-	"github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/e2etestenv"
-	"github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/kustomize"
+	internalClient "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/client"
+	"github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/deployment"
+	"github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/e2etestenv"
+	"github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/kustomize"
 
-	_ "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/tests/backup"
-	_ "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/tests/replicacluster"
+	_ "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/tests/backup"
+	_ "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/tests/replicacluster"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

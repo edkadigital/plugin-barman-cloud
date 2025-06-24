@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/operator"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/operator"
 )
 
 // NewCmd creates a new operator command

@@ -26,10 +26,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/common"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/operator/config"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/common"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/operator/config"
 )
 
 const (
