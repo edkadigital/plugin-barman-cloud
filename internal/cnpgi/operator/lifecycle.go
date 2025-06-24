@@ -17,8 +17,8 @@ import (
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/operator/config"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/operator/config"
 )
 
 // LifecycleImplementation is the implementation of the lifecycle handler

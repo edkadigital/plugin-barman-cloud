@@ -7,7 +7,7 @@ import (
 
 	barmanapi "github.com/cloudnative-pg/barman-cloud/pkg/api"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
 )
 
 // TODO: refactor.

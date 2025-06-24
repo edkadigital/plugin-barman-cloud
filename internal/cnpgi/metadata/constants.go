@@ -26,9 +26,9 @@ var Data = identity.GetPluginMetadataResponse{
 	Name:          PluginName,
 	Version:       "0.6.0", // x-release-please-version
 	DisplayName:   "BarmanCloudInstance",
-	ProjectUrl:    "https://github.com/cloudnative-pg/plugin-barman-cloud",
-	RepositoryUrl: "https://github.com/cloudnative-pg/plugin-barman-cloud",
+	ProjectUrl:    "https://github.com/edkadigital/plugin-barman-cloud",
+	RepositoryUrl: "https://github.com/edkadigital/plugin-barman-cloud",
 	License:       "APACHE 2.0",
-	LicenseUrl:    "https://github.com/cloudnative-pg/plugin-barman-cloud/LICENSE",
+	LicenseUrl:    "https://github.com/edkadigital/plugin-barman-cloud/LICENSE",
 	Maturity:      "alpha",
 }

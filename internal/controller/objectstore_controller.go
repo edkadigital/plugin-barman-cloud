@@ -25,7 +25,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
 )
 
 // ObjectStoreReconciler reconciles a ObjectStore object.

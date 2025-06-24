@@ -17,8 +17,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/scheme"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
-	extendedclient "github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/instance/internal/client"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
+	extendedclient "github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/instance/internal/client"
 )
 
 // Start starts the sidecar informers and CNPG-i server

@@ -8,7 +8,7 @@ import (
 	rbacv1 "k8s.io/api/rbac/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	barmancloudv1 "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
+	barmancloudv1 "github.com/edkadigital/plugin-barman-cloud/api/v1"
 )
 
 // BuildRole builds the Role object for this cluster

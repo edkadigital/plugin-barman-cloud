@@ -8,7 +8,7 @@ import (
 	"github.com/cloudnative-pg/machinery/pkg/stringset"
 	"k8s.io/apimachinery/pkg/types"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
 )
 
 // ConfigurationError represents a mistake in the plugin configuration

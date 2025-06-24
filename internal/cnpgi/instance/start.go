@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/common"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/common"
 )
 
 // CNPGI is the implementation of the PostgreSQL sidecar

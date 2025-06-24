@@ -27,10 +27,10 @@ import (
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	internalClient "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/client"
-	cluster2 "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/cluster"
-	"github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/command"
-	nmsp "github.com/cloudnative-pg/plugin-barman-cloud/test/e2e/internal/namespace"
+	internalClient "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/client"
+	cluster2 "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/cluster"
+	"github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/command"
+	nmsp "github.com/edkadigital/plugin-barman-cloud/test/e2e/internal/namespace"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

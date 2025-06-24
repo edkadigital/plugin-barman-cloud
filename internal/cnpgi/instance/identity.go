@@ -6,7 +6,7 @@ import (
 	"github.com/cloudnative-pg/cnpg-i/pkg/identity"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/cloudnative-pg/plugin-barman-cloud/internal/cnpgi/metadata"
+	"github.com/edkadigital/plugin-barman-cloud/internal/cnpgi/metadata"
 )
 
 // IdentityImplementation implements IdentityServer
