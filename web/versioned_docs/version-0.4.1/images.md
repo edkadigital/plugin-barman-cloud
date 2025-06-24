@@ -19,7 +19,7 @@ within your Kubernetes environment with CloudNativePG. It is published on the
 GitHub Container Registry at `ghcr.io/edkadigital/plugin-barman-cloud`.
 
 This image is built from the
-[`Dockerfile.plugin`](https://github.com/cloudnative-pg/plugin-barman-cloud/blob/main/containers/Dockerfile.plugin)
+[`Dockerfile.plugin`](https://github.com/edkadigital/plugin-barman-cloud/blob/main/containers/Dockerfile.plugin)
 in the plugin repository.
 
 ## Sidecar Container Image
@@ -30,7 +30,7 @@ performing WAL archiving and backups on behalf of CloudNativePG.
 
 It is available at `ghcr.io/edkadigital/plugin-barman-cloud-sidecar` and is
 built from the
-[`Dockerfile.sidecar`](https://github.com/cloudnative-pg/plugin-barman-cloud/blob/main/containers/Dockerfile.sidecar).
+[`Dockerfile.sidecar`](https://github.com/edkadigital/plugin-barman-cloud/blob/main/containers/Dockerfile.sidecar).
 
 These sidecar images are designed to work seamlessly with the
 [`minimal` PostgreSQL container images](https://github.com/cloudnative-pg/postgres-containers?tab=readme-ov-file#minimal-images)

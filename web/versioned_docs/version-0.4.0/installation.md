@@ -63,7 +63,7 @@ release:
 
 ```sh
 kubectl apply -f \
-  https://github.com/cloudnative-pg/plugin-barman-cloud/releases/download/v0.4.0/manifest.yaml
+  https://github.com/edkadigital/plugin-barman-cloud/releases/download/v0.4.0/manifest.yaml
 ```
 
 <!-- x-release-please-end -->
@@ -112,6 +112,6 @@ following command:
 
 ```sh
 kubectl apply -f \
-  https://raw.githubusercontent.com/cloudnative-pg/plugin-barman-cloud/refs/heads/main/manifest.yaml
+  https://raw.githubusercontent.com/edkadigital/plugin-barman-cloud/refs/heads/main/manifest.yaml
 ```
 

@@ -6,7 +6,7 @@ domain: cnpg.io
 layout:
 - go.kubebuilder.io/v4
 projectName: plugin-barman-cloud
-repo: github.com/cloudnative-pg/plugin-barman-cloud
+repo: github.com/edkadigital/plugin-barman-cloud
 resources:
 - api:
     crdVersion: v1
@@ -15,6 +15,6 @@ resources:
   domain: cnpg.io
   group: barmancloud
   kind: ObjectStore
-  path: github.com/cloudnative-pg/plugin-barman-cloud/api/v1
+  path: github.com/edkadigital/plugin-barman-cloud/api/v1
   version: v1
 version: "3"
