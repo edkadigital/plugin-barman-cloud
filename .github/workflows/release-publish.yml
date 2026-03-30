@@ -23,7 +23,7 @@ jobs:
       - name: Install Dagger
         env:
           # renovate: datasource=github-tags depName=dagger/dagger versioning=semver
-          DAGGER_VERSION: 0.20.1
+          DAGGER_VERSION: 0.20.3
         run: |
           curl -L https://dl.dagger.io/dagger/install.sh | BIN_DIR=$HOME/.local/bin sh
       - name: Create image and manifest
@@ -35,6 +35,6 @@ jobs:
           task manifest
       - name: Attach manifest to release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
         run: |
           task upload-manifest-to-release
