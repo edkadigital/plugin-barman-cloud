@@ -19,6 +19,14 @@ Prometheus exporter of the instance manager:
   the UNIX timestamp representing the earliest point in time from which the
   cluster can be recovered.
 
+- `barman_cloud_cloudnative_pg_io_first_wal_submission_timestamp`:
+  the UNIX timestamp of the earliest WAL archive submission observed by the
+  plugin for the server.
+
+- `barman_cloud_cloudnative_pg_io_last_wal_submission_timestamp`:
+  the UNIX timestamp of the most recent WAL archive submission observed by the
+  plugin for the server.
+
 These metrics supersede the previously available in-core metrics that used the
 `cnpg_collector` prefix. The new metrics are exposed under the
 `barman_cloud_cloudnative_pg_io` prefix instead.

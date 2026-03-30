@@ -80,14 +80,21 @@ type ObjectStoreStatus struct {
 	ServerRecoveryWindow map[string]RecoveryWindow `json:"serverRecoveryWindow,omitempty"`
 }
 
-// RecoveryWindow represents the time span between the first
-// recoverability point and the last successful backup of a PostgreSQL
-// server, defining the period during which data can be restored.
+// RecoveryWindow represents the recoverability metadata discovered from
+// the backup catalog and WAL archive activity of a PostgreSQL server.
 type RecoveryWindow struct {
 	// The first recoverability point in a PostgreSQL server refers to
 	// the earliest point in time to which the database can be
 	// restored.
 	FirstRecoverabilityPoint *metav1.Time `json:"firstRecoverabilityPoint,omitempty"`
+
+	// The timestamp of the earliest WAL archive submission observed by
+	// the plugin for this server.
+	FirstWALSubmissionTime *metav1.Time `json:"firstWALSubmissionTime,omitempty"`
+
+	// The timestamp of the most recent WAL archive submission observed
+	// by the plugin for this server.
+	LastWALSubmissionTime *metav1.Time `json:"lastWALSubmissionTime,omitempty"`
 
 	// The last successful backup time
 	LastSuccessfulBackupTime *metav1.Time `json:"lastSuccessfulBackupTime,omitempty"`

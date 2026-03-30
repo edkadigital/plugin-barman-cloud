@@ -90,9 +90,8 @@ _Appears in:_
 
 
 
-RecoveryWindow represents the time span between the first
-recoverability point and the last successful backup of a PostgreSQL
-server, defining the period during which data can be restored.
+RecoveryWindow represents the recoverability metadata discovered from
+the backup catalog and WAL archive activity of a PostgreSQL server.
 
 
 
@@ -102,7 +101,8 @@ _Appears in:_
 | Field | Description | Required | Default | Validation |
 | --- | --- | --- | --- | --- |
 | `firstRecoverabilityPoint` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#time-v1-meta)_ | The first recoverability point in a PostgreSQL server refers to<br />the earliest point in time to which the database can be<br />restored. | True |  |  |
+| `firstWALSubmissionTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#time-v1-meta)_ | The timestamp of the earliest WAL archive submission observed by<br />the plugin for this server. | True |  |  |
+| `lastWALSubmissionTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#time-v1-meta)_ | The timestamp of the most recent WAL archive submission observed<br />by the plugin for this server. | True |  |  |
 | `lastSuccessfulBackupTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#time-v1-meta)_ | The last successful backup time | True |  |  |
 | `lastFailedBackupTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#time-v1-meta)_ | The last failed backup time | True |  |  |
-
 

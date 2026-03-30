@@ -664,9 +664,8 @@ spec:
               serverRecoveryWindow:
                 additionalProperties:
                   description: |-
-                    RecoveryWindow represents the time span between the first
-                    recoverability point and the last successful backup of a PostgreSQL
-                    server, defining the period during which data can be restored.
+                    RecoveryWindow represents the recoverability metadata discovered from
+                    the backup catalog and WAL archive activity of a PostgreSQL server.
                   properties:
                     firstRecoverabilityPoint:
                       description: |-
@@ -675,12 +674,24 @@ spec:
                         restored.
                       format: date-time
                       type: string
+                    firstWALSubmissionTime:
+                      description: |-
+                        The timestamp of the earliest WAL archive submission observed by
+                        the plugin for this server.
+                      format: date-time
+                      type: string
                     lastFailedBackupTime:
                       description: The last failed backup time
                       format: date-time
                       type: string
                     lastSuccessfulBackupTime:
                       description: The last successful backup time
+                      format: date-time
+                      type: string
+                    lastWALSubmissionTime:
+                      description: |-
+                        The timestamp of the most recent WAL archive submission observed
+                        by the plugin for this server.
                       format: date-time
                       type: string
                   type: object

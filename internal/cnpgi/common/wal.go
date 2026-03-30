@@ -214,10 +214,26 @@ func (w WALServiceImplementation) Archive(
 	contextLogger.Debug("WAL files to archive", "walFilesListReady", walFilesList.Ready)
 
 	result := arch.ArchiveList(ctx, walFilesList.ReadyItemsToSlice(), options)
+	var submissionTimes []time.Time
 	for _, archiverResult := range result {
 		if archiverResult.Err != nil {
 			return nil, archiverResult.Err
 		}
+		submissionTimes = append(submissionTimes, archiverResult.EndTime)
+	}
+
+	if err := SetWALSubmissionTimes(
+		ctx,
+		w.Client,
+		client.ObjectKeyFromObject(&objectStore),
+		configuration.ServerName,
+		submissionTimes,
+	); err != nil {
+		contextLogger.Error(
+			err,
+			"Error while updating WAL submission times in the ObjectStore status stanza. Skipping.",
+			"serverName", configuration.ServerName,
+		)
 	}
 
 	return &wal.WALArchiveResult{}, nil

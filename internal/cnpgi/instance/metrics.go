@@ -49,6 +49,8 @@ func buildFqName(name string) string {
 
 var (
 	firstRecoverabilityPointMetricName     = buildFqName("first_recoverability_point")
+	firstWALSubmissionTimestampMetricName  = buildFqName("first_wal_submission_timestamp")
+	lastWALSubmissionTimestampMetricName   = buildFqName("last_wal_submission_timestamp")
 	lastAvailableBackupTimestampMetricName = buildFqName("last_available_backup_timestamp")
 	lastFailedBackupTimestampMetricName    = buildFqName("last_failed_backup_timestamp")
 )
@@ -85,6 +87,16 @@ func (m metricsImpl) Define(
 			{
 				FqName:    firstRecoverabilityPointMetricName,
 				Help:      "The first point of recoverability for the cluster as a unix timestamp",
+				ValueType: &metrics.MetricType{Type: metrics.MetricType_TYPE_GAUGE},
+			},
+			{
+				FqName:    firstWALSubmissionTimestampMetricName,
+				Help:      "The earliest WAL archive submission observed by the plugin as a unix timestamp",
+				ValueType: &metrics.MetricType{Type: metrics.MetricType_TYPE_GAUGE},
+			},
+			{
+				FqName:    lastWALSubmissionTimestampMetricName,
+				Help:      "The latest WAL archive submission observed by the plugin as a unix timestamp",
 				ValueType: &metrics.MetricType{Type: metrics.MetricType_TYPE_GAUGE},
 			},
 			{
@@ -129,6 +141,14 @@ func (m metricsImpl) Collect(
 					Value:  0,
 				},
 				{
+					FqName: firstWALSubmissionTimestampMetricName,
+					Value:  0,
+				},
+				{
+					FqName: lastWALSubmissionTimestampMetricName,
+					Value:  0,
+				},
+				{
 					FqName: lastAvailableBackupTimestampMetricName,
 					Value:  0,
 				},
@@ -141,10 +161,18 @@ func (m metricsImpl) Collect(
 	}
 
 	var firstRecoverabilityPoint float64
+	var firstWALSubmission float64
+	var lastWALSubmission float64
 	var lastAvailableBackup float64
 	var lastFailedBackup float64
 	if x.FirstRecoverabilityPoint != nil {
 		firstRecoverabilityPoint = float64(x.FirstRecoverabilityPoint.Unix())
+	}
+	if x.FirstWALSubmissionTime != nil {
+		firstWALSubmission = float64(x.FirstWALSubmissionTime.Unix())
+	}
+	if x.LastWALSubmissionTime != nil {
+		lastWALSubmission = float64(x.LastWALSubmissionTime.Unix())
 	}
 	if x.LastSuccessfulBackupTime != nil {
 		lastAvailableBackup = float64(x.LastSuccessfulBackupTime.Unix())
@@ -158,6 +186,14 @@ func (m metricsImpl) Collect(
 			{
 				FqName: firstRecoverabilityPointMetricName,
 				Value:  firstRecoverabilityPoint,
+			},
+			{
+				FqName: firstWALSubmissionTimestampMetricName,
+				Value:  firstWALSubmission,
+			},
+			{
+				FqName: lastWALSubmissionTimestampMetricName,
+				Value:  lastWALSubmission,
 			},
 			{
 				FqName: lastAvailableBackupTimestampMetricName,

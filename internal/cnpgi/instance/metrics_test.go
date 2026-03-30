@@ -59,6 +59,8 @@ var _ = Describe("Metrics Collect method", func() {
 
 		// Timestamps for the test
 		firstRecoverabilityPoint := metav1.NewTime(time.Now().Add(-24 * time.Hour))
+		firstWALSubmissionTime := metav1.NewTime(time.Now().Add(-90 * time.Minute))
+		lastWALSubmissionTime := metav1.NewTime(time.Now().Add(-15 * time.Minute))
 		lastSuccessfulBackupTime := metav1.NewTime(time.Now())
 
 		// Create a fake ObjectStore with a status
@@ -71,6 +73,8 @@ var _ = Describe("Metrics Collect method", func() {
 				ServerRecoveryWindow: map[string]barmancloudv1.RecoveryWindow{
 					clusterName: {
 						FirstRecoverabilityPoint: &firstRecoverabilityPoint,
+						FirstWALSubmissionTime:   &firstWALSubmissionTime,
+						LastWALSubmissionTime:    &lastWALSubmissionTime,
 						LastSuccessfulBackupTime: &lastSuccessfulBackupTime,
 					},
 				},
@@ -117,7 +121,7 @@ var _ = Describe("Metrics Collect method", func() {
 		res, err := m.Collect(ctx, req)
 		Expect(err).ToNot(HaveOccurred())
 		Expect(res).ToNot(BeNil())
-		Expect(res.Metrics).To(HaveLen(3))
+		Expect(res.Metrics).To(HaveLen(5))
 
 		// Verify the metrics
 		metricsMap := make(map[string]float64)
@@ -128,6 +132,12 @@ var _ = Describe("Metrics Collect method", func() {
 		// Check timestamp metrics
 		expectedFirstPoint, _ := metricsMap[firstRecoverabilityPointMetricName]
 		Expect(expectedFirstPoint).To(BeNumerically("~", float64(objectStore.Status.ServerRecoveryWindow[clusterName].FirstRecoverabilityPoint.Unix()), 1))
+
+		expectedFirstWALSubmission, _ := metricsMap[firstWALSubmissionTimestampMetricName]
+		Expect(expectedFirstWALSubmission).To(BeNumerically("~", float64(objectStore.Status.ServerRecoveryWindow[clusterName].FirstWALSubmissionTime.Unix()), 1))
+
+		expectedLastWALSubmission, _ := metricsMap[lastWALSubmissionTimestampMetricName]
+		Expect(expectedLastWALSubmission).To(BeNumerically("~", float64(objectStore.Status.ServerRecoveryWindow[clusterName].LastWALSubmissionTime.Unix()), 1))
 
 		expectedLastBackup, _ := metricsMap[lastAvailableBackupTimestampMetricName]
 		Expect(expectedLastBackup).To(BeNumerically("~", float64(objectStore.Status.ServerRecoveryWindow[clusterName].LastSuccessfulBackupTime.Unix()), 1))
