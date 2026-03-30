@@ -58,8 +58,7 @@ func Start(ctx context.Context) error {
 			// Important: the caching options below are used by
 			// controller-runtime only.
 			// The plugin code uses an enhanced client with a
-			// custom caching strategy specifically for ObjectStores
-			// and Clusters.
+			// custom caching strategy for secrets only.
 			//
 			// This custom strategy is necessary because we lack
 			// permission to list these resources at the namespace

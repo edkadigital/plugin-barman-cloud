@@ -49,16 +49,29 @@ func updateRecoveryWindow(
 		return ptr.To(metav1.NewTime(*t))
 	}
 
-	recoveryWindow := objectStore.Status.ServerRecoveryWindow[serverName]
-	recoveryWindow.FirstRecoverabilityPoint = convertTime(backupList.GetFirstRecoverabilityPoint())
-	recoveryWindow.LastSuccessfulBackupTime = convertTime(backupList.GetLastSuccessfulBackupTime())
+	firstRecoverabilityPoint := convertTime(backupList.GetFirstRecoverabilityPoint())
+	lastSuccessfulBackupTime := convertTime(backupList.GetLastSuccessfulBackupTime())
+	objectStoreKey := client.ObjectKeyFromObject(objectStore)
 
-	if objectStore.Status.ServerRecoveryWindow == nil {
-		objectStore.Status.ServerRecoveryWindow = make(map[string]barmancloudv1.RecoveryWindow)
-	}
-	objectStore.Status.ServerRecoveryWindow[serverName] = recoveryWindow
+	return retry.RetryOnConflict(retry.DefaultBackoff, func() error {
+		var refreshedObjectStore barmancloudv1.ObjectStore
 
-	return c.Status().Update(ctx, objectStore)
+		if err := c.Get(ctx, objectStoreKey, &refreshedObjectStore); err != nil {
+			return err
+		}
+
+		recoveryWindow := refreshedObjectStore.Status.ServerRecoveryWindow[serverName]
+		recoveryWindow.FirstRecoverabilityPoint = firstRecoverabilityPoint
+		recoveryWindow.LastSuccessfulBackupTime = lastSuccessfulBackupTime
+
+		if refreshedObjectStore.Status.ServerRecoveryWindow == nil {
+			refreshedObjectStore.Status.ServerRecoveryWindow =
+				make(map[string]barmancloudv1.RecoveryWindow)
+		}
+		refreshedObjectStore.Status.ServerRecoveryWindow[serverName] = recoveryWindow
+
+		return c.Status().Update(ctx, &refreshedObjectStore)
+	})
 }
 
 // setLastFailedBackupTime sets the last failed backup time in the

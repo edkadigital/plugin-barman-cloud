@@ -135,7 +135,7 @@ var _ = Describe("ExtendedClient Get", func() {
 		Expect(extendedClient.cachedObjects).To(BeEmpty())
 	})
 
-	It("returns the correct object from cache when multiple objects with the same object key are cached",
+	It("returns the correct object from cache when a cached secret shares an object key with a non-cached object",
 		func(ctx SpecContext) {
 			secretNotInClient := &corev1.Secret{
 				ObjectMeta: metav1.ObjectMeta{
@@ -149,18 +149,20 @@ var _ = Describe("ExtendedClient Get", func() {
 					Name:      "common-name",
 				},
 			}
+			err := extendedClient.Create(ctx, objectStoreNotInClient)
+			Expect(err).NotTo(HaveOccurred())
 
-			// manually add the objects to the cache, these are not present in the fake client,
-			// so we are sure they are from the cache
+			// manually add the secret to the cache, this is not present in the fake client,
+			// so we are sure it is returned from the cache
 			addToCache(extendedClient, secretNotInClient, time.Now().Unix())
-			addToCache(extendedClient, objectStoreNotInClient, time.Now().Unix())
 
-			err := extendedClient.Get(ctx, client.ObjectKeyFromObject(secretNotInClient), secretInClient)
+			err = extendedClient.Get(ctx, client.ObjectKeyFromObject(secretNotInClient), secretInClient)
 			Expect(err).NotTo(HaveOccurred())
 			err = extendedClient.Get(ctx, client.ObjectKeyFromObject(objectStoreNotInClient), objectStore)
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(secretInClient.GetResourceVersion()).To(Equal("from cache"))
-			Expect(objectStore.GetResourceVersion()).To(Equal("from cache"))
+			Expect(objectStore.GetResourceVersion()).NotTo(Equal("from cache"))
+			Expect(extendedClient.cachedObjects).To(HaveLen(1))
 		})
 })

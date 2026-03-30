@@ -29,8 +29,6 @@ import (
 	"github.com/cloudnative-pg/machinery/pkg/log"
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-
-	pluginBarman "github.com/cloudnative-pg/plugin-barman-cloud/api/v1"
 )
 
 // DefaultTTLSeconds is the default TTL in seconds of cache entries
@@ -64,15 +62,8 @@ func NewExtendedClient(
 }
 
 func (e *ExtendedClient) isObjectCached(obj client.Object) bool {
-	if _, isSecret := obj.(*corev1.Secret); isSecret {
-		return true
-	}
-
-	if _, isObjectStore := obj.(*pluginBarman.ObjectStore); isObjectStore {
-		return true
-	}
-
-	return false
+	_, isSecret := obj.(*corev1.Secret)
+	return isSecret
 }
 
 // Get behaves like the original Get method, but uses a cache for secrets
