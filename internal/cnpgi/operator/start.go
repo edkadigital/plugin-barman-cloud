@@ -39,6 +39,19 @@ type CNPGI struct {
 	ServerAddress  string
 }
 
+// NeedLeaderElection lets every replica serve the CNPG-I endpoints, while the
+// ObjectStore reconciler keeps running on the leader only.
+//
+// The operator reaches the plugin through its Service and loads it before
+// every Cluster reconcile, failover included. When only the leader served,
+// a standby replica never became ready, so losing the leader's node left the
+// Service without an endpoint and the operator without failover until a new
+// leader started. The hooks only read the API, return patches, or create and
+// patch the Role and RoleBinding a Cluster needs, so any replica can answer.
+func (c *CNPGI) NeedLeaderElection() bool {
+	return false
+}
+
 // Start starts the GRPC server
 // of the operator plugin
 func (c *CNPGI) Start(ctx context.Context) error {
